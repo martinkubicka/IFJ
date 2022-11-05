@@ -7,7 +7,7 @@ run: parser
 	./parser
 
 memcheck: parser
-	valgrind --leak-check=full --track-origins=yes ./parser < testFile.txt
+	valgrind --leak-check=full -v --track-origins=yes ./parser < testFile.txt
 
 parser: parser.o scanner.o bottomUp.o stack.o symtable.o frames.o
 	$(CC) $(CFLAGS) parser.o scanner.o bottomUp.o stack.o symtable.o frames.o -o parser

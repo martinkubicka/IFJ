@@ -56,7 +56,7 @@ void getProlog()
 
 void dtorToken(Token *token)
 {
-    printf("\n%s\n", token->val);
+    printf("%s\n",token->val);
     if (token && token->val != NULL)
     {
         
@@ -987,7 +987,7 @@ Token *getToken()
             // end of switch by actualState
         }
     }
-    
+    printf("TOKEN VALUE: %s\n",token->val);
     return token;
 }
 /*** End of scanner.c ***/

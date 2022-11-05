@@ -10,8 +10,8 @@ FrameStack *initFrameStack()
 
 void pushFrame(FrameStack *stack, const char *name)
 {
-    Frame *frame = malloc(sizeof(frame));
-    frame->name = calloc(strlen(name), sizeof(char));
+    Frame *frame = malloc(sizeof(Frame));
+    frame->name = calloc(strlen(name)+1, sizeof(char));
     strcpy(frame->name, name);
     frame->parent = stack->current;
     stack->current = frame;

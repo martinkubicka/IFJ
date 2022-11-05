@@ -7,4 +7,5 @@ function hlavni_program(int $year) : void {
   write("Hello from IFJ", $year, "\n");
 }
 
+
 hlavni_program(22);

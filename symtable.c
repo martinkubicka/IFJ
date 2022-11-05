@@ -171,6 +171,8 @@ htab_pair_t *htab_lookup_add(htab_t *t, htab_key_t key)
         {
             return NULL;
         }
+        t->ptr_arr[index]->pair->function = NULL;
+        t->ptr_arr[index]->pair->variable = NULL;
         // skopirovanie kľúča
         str = malloc(strlen(key) * sizeof(htab_key_t));
         if (str == NULL)
@@ -210,6 +212,8 @@ htab_pair_t *htab_lookup_add(htab_t *t, htab_key_t key)
                     {
                         return NULL;
                     }
+                    tmp->next->pair->function = NULL;
+                    tmp->next->pair->variable = NULL;
                     // skopírovanie kľúča
                     str = malloc(strlen(key) * sizeof(htab_key_t));
                     if (str == NULL)
@@ -242,7 +246,7 @@ int htab_add_function(htab_t *t, htab_key_t name, function_param_t *returnType, 
     {
         return 2;
     }
-    pair->function->name = calloc(strlen(name), sizeof(char));
+    pair->function->name = calloc(strlen(name) + 1, sizeof(char));
     if (!pair->function->name)
     {
         return 2;
@@ -319,7 +323,7 @@ void htab_print(htab_t * t)
             }
             if (item->pair->variable)
             {
-                printf("variable: %s\n", item->pair->variable);
+                printf("variable: %s\n", item->pair->variable->name);
             }
             item = item->next;
         }
